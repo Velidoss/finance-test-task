@@ -11,6 +11,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getPrices());
+    return () => dispatch(disconnectSocket());
   }, []);
 
   const handleClick = () => {
