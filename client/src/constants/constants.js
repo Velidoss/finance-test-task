@@ -1,0 +1,5 @@
+export const appStatuses = {
+  STATUS_LOADING: 'STATUS_LOADING',
+  STATUS_ERROR: 'STATUS_ERROR',
+  STATUS_READY: 'STATUS_READY',
+};
