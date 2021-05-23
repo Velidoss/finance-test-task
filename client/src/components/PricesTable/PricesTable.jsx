@@ -7,16 +7,24 @@ import { Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from
 import style from './PricesTable.style';
 import PriceTickerCell from './PriceTicker/PriceTickerCell/PriceTickerCell';
 import TickerCell from './PriceTicker/TickerCell/TickerCell';
+import retrievingSelector from './../../store/selectors/retrievingSelector';
 
 const PricesTable = (props) => {
   const classes = style();
 
   const dispatch = useDispatch();
 
+  const retrieving = useSelector(retrievingSelector);
   const prices = useSelector(priceSelector);
 
+  const handleClick = () => {
+    dispatch(disconnectSocket());
+  };
+
   useEffect(() => {
-    dispatch(getPrices());
+    if (retrieving) {
+      dispatch(getPrices());
+    }
     return () => dispatch(disconnectSocket());
   }, []);
 
