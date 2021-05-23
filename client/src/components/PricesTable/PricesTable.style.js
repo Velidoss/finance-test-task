@@ -1,14 +1,18 @@
 const { makeStyles } = require("@material-ui/core");
 
-const AppStyle = makeStyles({
-  container: {
-    width: '100%',
-    height: '100vh',
+const PricesTableStyles = makeStyles({
+  table: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  cell: {
+    minWidth: 100,
+  },
+  cellWide: {
+    minWidth: 200,
   }
 });
 
-export default AppStyle;
+export default PricesTableStyles;
