@@ -1,5 +1,6 @@
 import { SET_PRICES } from '../actionTypes/actionTypes';
 import { appStatuses } from './../../constants/constants';
+import comparePrices from './../../utils/comparePrices';
 
 const {STATUS_READY} = appStatuses;
 
@@ -11,7 +12,7 @@ const initialState = {
 const pricesReducer = (state = initialState, {type, payload}) => {
   switch(type) {
     case SET_PRICES: 
-      return {...state, prices: payload};
+      return {...state, prices: comparePrices(state.prices, payload)};
     default: 
       return {...state};
   }

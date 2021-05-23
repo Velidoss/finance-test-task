@@ -3,3 +3,8 @@ export const appStatuses = {
   STATUS_ERROR: 'STATUS_ERROR',
   STATUS_READY: 'STATUS_READY',
 };
+
+export const priceStatuses = {
+  PRICE_ASCENDING: 'PRICE_ASCENDING',
+  PRICE_DESCENDING: 'PRICE_DESCENDING',
+}

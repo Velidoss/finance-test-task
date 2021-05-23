@@ -5,7 +5,8 @@ import { disconnectSocket, getPrices } from './../../store/pricesReducer/pricesA
 import { tableColumns } from '../../config/pricesTableConfig';
 import { Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import style from './PricesTable.style';
-import PriceTickerParam from './PriceTicker/PriceTickerParam/PriceTickerParam';
+import PriceTickerCell from './PriceTicker/PriceTickerCell/PriceTickerCell';
+import TickerCell from './PriceTicker/TickerCell/TickerCell';
 
 const PricesTable = (props) => {
   const classes = style();
@@ -36,14 +37,14 @@ const PricesTable = (props) => {
         {
           prices.map((price) => (
             <TableRow key={price.ticker}>
-              <PriceTickerParam className={classes.cell} param={price.change} />
-              <PriceTickerParam className={classes.cell} param={price.change_percent} />
-              <PriceTickerParam className={classes.cell} param={price.dividend} />
-              <PriceTickerParam className={classes.cell} param={price.exchange} />
-              <PriceTickerParam className={classes.cellWide} param={price.last_trade_time} />
-              <PriceTickerParam className={classes.cell} param={price.price} />
-              <PriceTickerParam className={classes.cell} param={price.ticker} />
-              <PriceTickerParam className={classes.cell} param={price.yield} />
+              <TickerCell className={classes.cell} param={price.change} status={price.status} />
+              <TickerCell className={classes.cell} param={price.change_percent} status={price.status} />
+              <TickerCell className={classes.cell} param={price.dividend} status={price.status} />
+              <TickerCell className={classes.cell} param={price.exchange} status={price.status} />
+              <TickerCell className={classes.cellWide} param={price.last_trade_time} status={price.status} />
+              <PriceTickerCell className={classes.cell} param={price.price} status={price.status} />
+              <TickerCell className={classes.cell} param={price.ticker} status={price.status} />
+              <TickerCell className={classes.cell} param={price.yield} status={price.status} />
             </TableRow>
           ))
         }
