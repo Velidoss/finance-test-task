@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import priceSelector from './../../store/selectors/pricesSelector';
 import { disconnectSocket, getPrices } from './../../store/pricesReducer/pricesActions';
 import { tableColumns } from '../../config/pricesTableConfig';
-import { Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { Button, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import style from './PricesTable.style';
 import PriceTickerCell from './PriceTicker/PriceTickerCell/PriceTickerCell';
 import TickerCell from './PriceTicker/TickerCell/TickerCell';
@@ -23,6 +23,11 @@ const PricesTable = (props) => {
     }
     return () => dispatch(disconnectSocket());
   }, []);
+
+  const setIntervalOfData = () => {
+    dispatch(disconnectSocket());
+    dispatch(getPrices(3000));
+  };
 
 
   return (
@@ -53,6 +58,9 @@ const PricesTable = (props) => {
           ))
         }
       </TableBody>
+      <Button onClick={setIntervalOfData}>
+        Set interval to 3 seconds
+      </Button>
     </TableContainer>
   )
 };
