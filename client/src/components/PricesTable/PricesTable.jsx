@@ -5,6 +5,7 @@ import { disconnectSocket, getPrices } from './../../store/pricesReducer/pricesA
 import { tableColumns } from '../../config/pricesTableConfig';
 import { Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import style from './PricesTable.style';
+import PriceTickerParam from './PriceTicker/PriceTickerParam/PriceTickerParam';
 
 const PricesTable = (props) => {
   const classes = style();
@@ -35,14 +36,14 @@ const PricesTable = (props) => {
         {
           prices.map((price) => (
             <TableRow key={price.ticker}>
-              <TableCell className={classes.cell} align="center">{price.change}</TableCell>
-              <TableCell className={classes.cell} align="center">{price.change_percent}</TableCell>
-              <TableCell className={classes.cell} align="center">{price.dividend}</TableCell>
-              <TableCell className={classes.cell} align="center">{price.exchange}</TableCell>
-              <TableCell className={classes.cell} align="center">{price.last_trade_time}</TableCell>
-              <TableCell className={classes.cell} align="center">{price.price}</TableCell>
-              <TableCell className={classes.cell} align="center">{price.ticker}</TableCell>
-              <TableCell className={classes.cell} align="center">{price.yield}</TableCell>
+              <PriceTickerParam className={classes.cell} param={price.change} />
+              <PriceTickerParam className={classes.cell} param={price.change_percent} />
+              <PriceTickerParam className={classes.cell} param={price.dividend} />
+              <PriceTickerParam className={classes.cell} param={price.exchange} />
+              <PriceTickerParam className={classes.cellWide} param={price.last_trade_time} />
+              <PriceTickerParam className={classes.cell} param={price.price} />
+              <PriceTickerParam className={classes.cell} param={price.ticker} />
+              <PriceTickerParam className={classes.cell} param={price.yield} />
             </TableRow>
           ))
         }
