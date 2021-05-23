@@ -17,13 +17,9 @@ const PricesTable = (props) => {
   const retrieving = useSelector(retrievingSelector);
   const prices = useSelector(priceSelector);
 
-  const handleClick = () => {
-    dispatch(disconnectSocket());
-  };
-
   useEffect(() => {
     if (retrieving) {
-      dispatch(getPrices());
+      dispatch(getPrices(10000));
     }
     return () => dispatch(disconnectSocket());
   }, []);

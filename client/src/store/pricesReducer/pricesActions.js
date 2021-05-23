@@ -1,7 +1,8 @@
 import { GET_PRICES, DISCONNECT_SOCKET, STOP_RETRIEVE, START_RETRIEVE } from './../actionTypes/actionTypes';
 
-export const getPrices = () => ({
+export const getPrices = (interval) => ({
   type: GET_PRICES,
+  interval,
 });
 
 export const stopRetrieve = () => ({
