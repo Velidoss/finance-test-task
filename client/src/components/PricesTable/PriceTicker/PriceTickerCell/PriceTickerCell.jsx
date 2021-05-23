@@ -22,11 +22,12 @@ const PriceTickerCell = ({className, param, status}) => {
 
   return (
     <TickerCell 
-      className={`${className} ${colorClass}`} 
+      className={className} 
+      dataColorClass={colorClass}
       param={param} 
       icon={status === PRICE_ASCENDING 
-        ? <IconAscending /> 
-        : <IconDescending />
+        ? <IconAscending style={{marginLeft: 10}} /> 
+        : <IconDescending style={{marginLeft: 10}} />
       }
     />
   )

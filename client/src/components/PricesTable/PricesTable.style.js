@@ -12,6 +12,12 @@ const PricesTableStyles = makeStyles({
   },
   cellWide: {
     minWidth: 200,
+  },
+  cellData: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
   }
 });
 
