@@ -22,17 +22,9 @@ const PricesTable = (props) => {
       dispatch(getPrices(10000));
     }
     return () => {
-      console.log('disconnect from table on unmount')
       dispatch(disconnectSocket())
     };
   }, []);
-
-  const setIntervalOfData = () => {
-    console.log('disconnect from table ')
-    dispatch(disconnectSocket());
-    dispatch(connectSocket(3000));
-  };
-
 
   return (
     <TableContainer className={classes.table} component={Paper}>
@@ -62,9 +54,6 @@ const PricesTable = (props) => {
           ))
         }
       </TableBody>
-      <Button onClick={setIntervalOfData}>
-        Set interval to 3 seconds
-      </Button>
     </TableContainer>
   )
 };

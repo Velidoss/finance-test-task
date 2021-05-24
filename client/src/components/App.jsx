@@ -2,8 +2,8 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import style from './App.style';
 import PricesTable from './PricesTable/PricesTable';
-import RetrieveButton from './RetrieveButton/RetrieveButton';
-import IntervalPicker from './IntervalPicker/IntervalPicker';
+import RetrieveButton from './TableControls/RetrieveButton/RetrieveButton';
+import IntervalPicker from './TableControls/IntervalPicker/IntervalPicker';
 
 const App = () => {
   const classes = style();

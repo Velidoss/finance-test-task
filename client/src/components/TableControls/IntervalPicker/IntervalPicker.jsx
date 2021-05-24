@@ -1,8 +1,8 @@
 import { Slider } from '@material-ui/core';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import createSliderMarks from './../../utils/createSliderMarks';
-import { connectSocket, disconnectSocket } from './../../store/pricesReducer/pricesActions';
+import createSliderMarks from '../../../utils/createSliderMarks';
+import { connectSocket, disconnectSocket } from '../../../store/pricesReducer/pricesActions';
 
 const IntervalPicker = () => {
   const [value, setValue] = React.useState(5);
@@ -13,7 +13,6 @@ const IntervalPicker = () => {
   };
 
   const setIntervalOfData = () => {
-    console.log('disconnect from picker')
     dispatch(disconnectSocket());
     dispatch(connectSocket(value  * 1000));
   };

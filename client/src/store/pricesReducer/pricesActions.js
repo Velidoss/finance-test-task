@@ -14,14 +14,12 @@ export const startRetrieve = () => ({
 });
 
 export const disconnectSocket = () => {
-  console.log('dispatch disconnect')
   return {
     type: STOP_RETRIEVING,
   }
 };
 
 export const connectSocket = (interval) => {
-  console.log('dispatch reconnect')
   return {
     type: START_RETRIEVING,
     newInterval: interval,
