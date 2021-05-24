@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { disconnectSocket, stopRetrieve } from '../../store/pricesReducer/pricesActions';
+import { connectSocket, disconnectSocket, stopRetrieve } from '../../store/pricesReducer/pricesActions';
 import retrievingSelector from './../../store/selectors/retrievingSelector';
 import { startRetrieve, getPrices } from './../../store/pricesReducer/pricesActions';
 
@@ -15,7 +15,7 @@ const RetrieveButton = () => {
 
   const start = () => {
     dispatch(startRetrieve());
-    dispatch(getPrices());
+    dispatch(connectSocket(10000));
   };
 
   return retrieving 
