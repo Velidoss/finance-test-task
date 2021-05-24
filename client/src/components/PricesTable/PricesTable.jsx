@@ -58,9 +58,9 @@ const PricesTable = (props) => {
           ))
         }
       </TableBody>
-      <Button onClick={setIntervalOfData}>
+      {/* <Button onClick={setIntervalOfData}>
         Set interval to 3 seconds
-      </Button>
+      </Button> */}
     </TableContainer>
   )
 };
