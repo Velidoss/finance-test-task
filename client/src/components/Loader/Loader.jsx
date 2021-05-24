@@ -6,7 +6,12 @@ const Loader = () => {
   const classes = style();
 
   return (
-    <Grid className={classes.loaderContainer}>
+    <Grid 
+      container
+      className={classes.loaderContainer}
+      justify="center"
+      alignItems="center"
+    >
       <CircularProgress />
     </Grid>
   )
