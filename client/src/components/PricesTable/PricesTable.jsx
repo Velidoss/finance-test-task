@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import priceSelector from './../../store/selectors/pricesSelector';
-import { disconnectSocket, getPrices } from './../../store/pricesReducer/pricesActions';
+import { connectSocket, disconnectSocket, getPrices } from './../../store/pricesReducer/pricesActions';
 import { tableColumns } from '../../config/pricesTableConfig';
 import { Button, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import style from './PricesTable.style';
@@ -21,12 +21,16 @@ const PricesTable = (props) => {
     if (retrieving) {
       dispatch(getPrices(10000));
     }
-    return () => dispatch(disconnectSocket());
+    return () => {
+      console.log('disconnect from table on unmount')
+      dispatch(disconnectSocket())
+    };
   }, []);
 
   const setIntervalOfData = () => {
+    console.log('disconnect from table ')
     dispatch(disconnectSocket());
-    dispatch(getPrices(3000));
+    dispatch(connectSocket(3000));
   };
 
 
@@ -58,9 +62,9 @@ const PricesTable = (props) => {
           ))
         }
       </TableBody>
-      {/* <Button onClick={setIntervalOfData}>
+      <Button onClick={setIntervalOfData}>
         Set interval to 3 seconds
-      </Button> */}
+      </Button>
     </TableContainer>
   )
 };
