@@ -10,10 +10,10 @@ const TableControls = () => {
 
   return (
     <Grid className={classes.controls} container item direction="row">
-      <Grid item container justify="center" xs={6}>
+      <Grid item container justify="center" xs={12} lg={6}>
         <IntervalPicker />
       </Grid>
-      <Grid item container justify="center" xs={6}>
+      <Grid item container justify="center" xs={12} lg={6}>
         <RetrieveButton />
       </Grid>
     </Grid>
