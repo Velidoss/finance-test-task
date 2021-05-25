@@ -20,7 +20,7 @@ const PriceTickerCell = ({className, param, status}) => {
     }
   }, [status, classes.ascending, classes.descending])
 
-  return (
+  return status ? (
     <TickerCell 
       className={className} 
       dataColorClass={colorClass}
@@ -29,6 +29,13 @@ const PriceTickerCell = ({className, param, status}) => {
         ? <IconAscending style={{marginLeft: 10}} /> 
         : <IconDescending style={{marginLeft: 10}} />
       }
+    />
+  )
+  :(
+    <TickerCell 
+      className={className} 
+      dataColorClass={colorClass}
+      param={param}
     />
   )
 };
