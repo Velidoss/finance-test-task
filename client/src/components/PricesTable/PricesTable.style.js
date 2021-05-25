@@ -1,6 +1,9 @@
 const { makeStyles } = require("@material-ui/core");
 
-const PricesTableStyles = makeStyles({
+const PricesTableStyles = makeStyles((theme) => ({
+  root: {
+    width: 'auto',
+  },
   table: {
     display: 'flex',
     flexDirection: 'column',
@@ -19,6 +22,6 @@ const PricesTableStyles = makeStyles({
     justifyContent: 'center',
     borderRadius: 10,
   }
-});
+}));
 
 export default PricesTableStyles;

@@ -34,7 +34,7 @@ const PricesTable = (props) => {
   console.log('rerender');
   return status === STATUS_READY ? (
   
-    <TableContainer className={classes.table} component={Paper}>
+    <TableContainer classes={{root: classes.root}} className={classes.table} component={Paper}>
       <TableHead>
         <TableRow>
           {
@@ -43,7 +43,6 @@ const PricesTable = (props) => {
             ))
           }      
         </TableRow>
-
       </TableHead>
       <TableBody>
         {
