@@ -1,16 +1,29 @@
 export const tableColumns = [
   {
+    field: 'ticker',
+    headerName: 'ticker',
+    class: 'cell',
+    sortable: false,
+  },
+  {
+    field: 'price',
+    headerName: 'price',
+    class: 'cell',
+    sortable: false,
+  },  
+  {
+    field: 'change_percent',
+    headerName: 'change in %',
+    class: 'cell',
+    sortable: false,
+  },
+  {
     field: 'change',
     headerName: 'change',
     class: 'cell',
     sortable: false,
   },
-  {
-    field: 'change_percent',
-    headerName: 'change_percent',
-    class: 'cell',
-    sortable: false,
-  },
+
   {
     field: 'dividend',
     headerName: 'dividend',
@@ -23,24 +36,8 @@ export const tableColumns = [
     class: 'cell',
     sortable: false,
   },
-  {
-    field: 'last_trade_time',
-    headerName: 'last_trade_time',
-    class: 'cellWide',
-    sortable: false,
-  },
-  {
-    field: 'price',
-    headerName: 'price',
-    class: 'cell',
-    sortable: false,
-  },
-  {
-    field: 'ticker',
-    headerName: 'ticker',
-    class: 'cell',
-    sortable: false,
-  },
+
+
   {
     field: 'yield',
     headerName: 'yield',

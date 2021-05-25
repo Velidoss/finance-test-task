@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import statusSelector from './../store/selectors/statusSelector';
 import { appStatuses } from './../constants/constants';
 import Loader from './Loader/Loader';
+import { Typography } from '@material-ui/core';
 
 const App = () => {
   const {STATUS_LOADING} = appStatuses;
@@ -19,6 +20,7 @@ const App = () => {
       {
         status === STATUS_LOADING && <Loader />
       }
+      <Typography align="center" variant="h1">Price tickers</Typography>
       <TableControls />
       <PricesTable />
     </Container>

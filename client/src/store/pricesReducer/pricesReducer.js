@@ -3,7 +3,7 @@ import { appStatuses } from './../../constants/constants';
 import comparePrices from './../../utils/comparePrices';
 import { START_RETRIEVE } from './../actionTypes/actionTypes';
 
-const {STATUS_READY, STATUS_ERROR, STATUS_LOADING} = appStatuses;
+const {STATUS_READY, STATUS_LOADING} = appStatuses;
 
 const initialState = {
   prices: [],

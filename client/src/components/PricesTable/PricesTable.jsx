@@ -9,14 +9,19 @@ import PriceTickerCell from './PriceTicker/PriceTickerCell/PriceTickerCell';
 import TickerCell from './PriceTicker/TickerCell/TickerCell';
 import retrievingSelector from './../../store/selectors/retrievingSelector';
 import { disconnect } from './../../store/store';
+import statusSelector from './../../store/selectors/statusSelector';
+import PricesTableSkeleton from './PricesTableSkeleton/PricesTableSkeleton';
+import { appStatuses } from './../../constants/constants';
 
 const PricesTable = (props) => {
+  const { STATUS_READY } = appStatuses;
   const classes = style();
 
   const dispatch = useDispatch();
 
   const retrieving = useSelector(retrievingSelector);
   const prices = useSelector(priceSelector);
+  const status = useSelector(statusSelector);
 
   useEffect(() => {
     if (retrieving) {
@@ -26,8 +31,9 @@ const PricesTable = (props) => {
       disconnect();
     };
   }, []);
-
-  return (
+  console.log('rerender');
+  return status === STATUS_READY ? (
+  
     <TableContainer className={classes.table} component={Paper}>
       <TableHead>
         <TableRow>
@@ -43,19 +49,21 @@ const PricesTable = (props) => {
         {
           prices.map((price) => (
             <TableRow key={price.ticker}>
-              <TickerCell className={classes.cell} param={price.change} status={price.status} />
-              <TickerCell className={classes.cell} param={price.change_percent} status={price.status} />
-              <TickerCell className={classes.cell} param={price.dividend} status={price.status} />
-              <TickerCell className={classes.cell} param={price.exchange} status={price.status} />
-              <TickerCell className={classes.cellWide} param={price.last_trade_time} status={price.status} />
-              <PriceTickerCell className={classes.cell} param={price.price} status={price.status} />
-              <TickerCell className={classes.cell} param={price.ticker} status={price.status} />
-              <TickerCell className={classes.cell} param={price.yield} status={price.status} />
+              <TickerCell className={classes.cell} param={price.ticker} />
+              <PriceTickerCell className={classes.cell} param={price.price} status={price.status} />              
+              <TickerCell className={classes.cell} param={`${parseInt(price.change_percent * 100)}%`} />
+              <TickerCell className={classes.cell} param={price.change} />
+              <TickerCell className={classes.cell} param={price.dividend} />
+              <TickerCell className={classes.cell} param={price.exchange} />
+              <TickerCell className={classes.cell} param={price.yield} />
             </TableRow>
           ))
         }
       </TableBody>
     </TableContainer>
+  )
+  : (
+  <PricesTableSkeleton />
   )
 };
 
