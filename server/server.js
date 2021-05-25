@@ -3,6 +3,9 @@ const express = require('express');
 const http = require('http');
 const io = require('socket.io');
 const cors = require('cors');
+const actionTypes = require('./constants/constants');
+
+const {GET_PRICES, START_RETRIEVING, STOP_RETRIEVING} = actionTypes;
 
 const FETCH_INTERVAL = 5000;
 const PORT = process.env.PORT || 4000;
@@ -39,21 +42,33 @@ function getQuotes(socket) {
     last_trade_time: utcDate(),
   }));
 
-  socket.emit('ticker', quotes);
+  socket.emit('action', { type: 'SET_PRICES', payload: quotes } );
 }
 
-function trackTickers(socket) {
+function trackTickers(socket, inerval = FETCH_INTERVAL) {
   // run the first time immediately
   getQuotes(socket);
 
   // every N seconds
-  const timer = setInterval(function() {
+  let timer = setInterval(function() {
     getQuotes(socket);
-  }, FETCH_INTERVAL);
+  }, inerval);
 
+  socket.on('action', (action) => {
+    if(action.type === STOP_RETRIEVING){
+      clearInterval(timer);
+    }
+    if(action.type === START_RETRIEVING) {
+      if (typeof timer === 'object') {
+        timer = setInterval(function() {
+          getQuotes(socket);
+        }, action.newInterval);
+      }
+    }
+  });
   socket.on('disconnect', function() {
     clearInterval(timer);
-  });
+  })
 }
 
 const app = express();
@@ -70,9 +85,11 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
-socketServer.on('connection', (socket) => {
-  socket.on('start', () => {
-    trackTickers(socket);
+socketServer.on('connection', function(socket){
+  socket.on('action', ({type, interval}) => {
+    if(type === GET_PRICES){
+      trackTickers(socket, interval);
+    }
   });
 });
 
