@@ -31,7 +31,7 @@ const PricesTable = (props) => {
       disconnect();
     };
   }, []);
-  console.log('rerender');
+
   return status === STATUS_READY ? (
   
     <TableContainer classes={{root: classes.root}} className={classes.table} component={Paper}>

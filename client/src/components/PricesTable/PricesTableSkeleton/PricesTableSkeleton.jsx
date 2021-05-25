@@ -1,7 +1,6 @@
 import React from 'react';
-import { Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { Paper, TableBody, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import style from '../PricesTable.style';
-import { tableColumns } from './../../../config/pricesTableConfig';
 import PricesTableSkeletonRow from './PricesTableSkeletonRow';
 
 const PricesTableSkeleton = () => {

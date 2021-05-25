@@ -18,7 +18,7 @@ const RetrieveButton = () => {
 
   const start = () => {
     dispatch(startRetrieve());
-    dispatch(connectSocket(10000));
+    dispatch(connectSocket(5000));
   };
 
   return (
