@@ -8,4 +8,8 @@ const socketIoMiddleware = createSocketIoMiddleware(socket, "server/");
 
 const store = createStore(pricesReducer, applyMiddleware(socketIoMiddleware));
 
+export function disconnect () {
+  socket.disconnect();
+};
+
 export default store;

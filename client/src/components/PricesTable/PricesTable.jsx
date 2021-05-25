@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import priceSelector from './../../store/selectors/pricesSelector';
-import { connectSocket, disconnectSocket, getPrices } from './../../store/pricesReducer/pricesActions';
+import { getPrices } from './../../store/pricesReducer/pricesActions';
 import { tableColumns } from '../../config/pricesTableConfig';
-import { Button, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import style from './PricesTable.style';
 import PriceTickerCell from './PriceTicker/PriceTickerCell/PriceTickerCell';
 import TickerCell from './PriceTicker/TickerCell/TickerCell';
 import retrievingSelector from './../../store/selectors/retrievingSelector';
+import { disconnect } from './../../store/store';
 
 const PricesTable = (props) => {
   const classes = style();
@@ -19,10 +20,10 @@ const PricesTable = (props) => {
 
   useEffect(() => {
     if (retrieving) {
-      dispatch(getPrices(10000));
+      dispatch(getPrices(5000));
     }
     return () => {
-      dispatch(disconnectSocket())
+      disconnect();
     };
   }, []);
 
